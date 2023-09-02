@@ -1,13 +1,12 @@
 /* import "./App.css"; */
 import Header from "./Header";
 import Main from "./Main";
-import Meme from "./Meme";
+import Memes from "./Memes";
 
 function App() {
   return (
     <div className=" flex-col ">
       <Header />
-      <Meme />
       <Main />
     </div>
   );
