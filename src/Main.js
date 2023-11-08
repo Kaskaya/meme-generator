@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { toPng } from "html-to-image";
+import download from "downloadjs";
 
 export default function Meme() {
   const [state, setState] = useState({});
@@ -7,6 +9,7 @@ export default function Meme() {
     topText: "",
     bottomtext: "",
     randomImage: "",
+    randomName: "",
   });
 
   useEffect(() => {
@@ -18,10 +21,12 @@ export default function Meme() {
   function changeMeme() {
     const randomNumber = Math.floor(Math.random() * state.data.memes.length);
     const url = state.data.memes[randomNumber].url;
+    const name = state.data.memes[randomNumber].name;
     setFormState((prevState) => {
       return {
         ...prevState,
         randomImage: url,
+        randomName: name,
       };
     });
   }
@@ -34,6 +39,16 @@ export default function Meme() {
         [name]: value,
       };
     });
+  }
+
+  const wrapper = document.getElementById("image-wrapper");
+
+  function downloadImage() {
+    toPng(wrapper)
+      .then((data) => {
+        download(data, `${formState.randomName}`);
+      })
+      .catch(() => console.log("Failed"));
   }
 
   return (
@@ -64,7 +79,10 @@ export default function Meme() {
           Get A New Meme
         </button>
       </div>
-      <div className=" flex justify-center align-middle items-center relative m-12 ">
+      <div
+        id="image-wrapper"
+        className=" flex justify-center align-middle items-center relative m-2 "
+      >
         <img src={formState.randomImage} className=" mx-auto max-w-2xl " />
         <h2 className=" absolute top-5 text-center text-white text-5xl font-bold border-x-zinc-800 drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
           {formState.topText}
@@ -72,6 +90,15 @@ export default function Meme() {
         <h2 className=" absolute bottom-5 text-center text-white text-5xl font-bold drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
           {formState.bottomtext}
         </h2>
+      </div>
+      <div className="flex justify-center align-middle items-center">
+        <button
+          onClick={downloadImage}
+          id="download-button"
+          className="bg-slate-300 px-8 py-2 text-black text-3xl rounded-lg  border-2 border-slate-800 "
+        >
+          Download
+        </button>
       </div>
     </main>
   );
