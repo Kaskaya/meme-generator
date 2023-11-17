@@ -48,7 +48,7 @@ export default function Meme() {
       .then((data) => {
         download(data, `${formState.randomName}`);
       })
-      .catch(() => console.log("Failed"));
+      .catch(() => console.log("Failed to download"));
   }
 
   return (
@@ -57,7 +57,6 @@ export default function Meme() {
         <input
           type="text"
           placeholder="1"
-          className="w-72 h-14 border-2 border-slate-300 rounded-xl mx-4 px-3 outline-none text-xl"
           onChange={handleChange}
           name="topText"
           value={formState.topText}
@@ -65,13 +64,12 @@ export default function Meme() {
         <input
           type="text"
           placeholder="2"
-          className="w-72 h-14 border-2 border-slate-300 rounded-xl mx-4 px-3 outline-none text-xl"
           onChange={handleChange}
           name="bottomtext"
           value={formState.bottomtext}
         />
       </div>
-      <div className="flex justify-center align-middle items-center">
+      <div id="div1">
         <button
           onClick={changeMeme}
           className="bg-gradient-to-r from-custom-main to-custom-secondary px-32 py-4 text-white text-3xl rounded-3xl  w-auto  "
@@ -79,10 +77,7 @@ export default function Meme() {
           Get A New Meme
         </button>
       </div>
-      <div
-        id="image-wrapper"
-        className=" flex justify-center align-middle items-center relative m-2 "
-      >
+      <div id="image-wrapper" className="  relative m-2 ">
         <img src={formState.randomImage} className=" mx-auto max-w-2xl " />
         <h2 className=" absolute top-5 text-center text-white text-5xl font-bold border-x-zinc-800 drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
           {formState.topText}
@@ -91,7 +86,7 @@ export default function Meme() {
           {formState.bottomtext}
         </h2>
       </div>
-      <div className="flex justify-center align-middle items-center">
+      <div id="div2">
         <button
           onClick={downloadImage}
           id="download-button"
