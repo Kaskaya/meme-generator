@@ -1,6 +1,6 @@
 # Meme Generator
 
-meme-generator-sooty-three.vercel.app
+https://meme-randomizer.vercel.app/
 
 Choose your meme, edit and download it
 
