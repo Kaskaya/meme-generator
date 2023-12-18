@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="bg-gradient-to-r from-custom-main to-custom-secondary h-24 p-10 flex items-center justify-between ">
+    <header className="bg-gradient-to-r from-custom-main to-custom-secondary h-24 p-10 flex items-center w-full ">
       <div className="flex items-center">
         <svg
           width="64"
@@ -184,7 +184,6 @@ export default function Header() {
         </svg>
         <h1 className="font-bold text-3xl text-white p-10 ">Meme Generator</h1>
       </div>
-      <h3 className="text-white text-xl">React Project</h3>
     </header>
   );
 }
