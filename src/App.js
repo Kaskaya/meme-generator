@@ -3,7 +3,7 @@ import Main from "./Main";
 
 function App() {
   return (
-    <div className=" flex-col ">
+    <div className=" w-full grid grid-cols-1  ">
       <Header />
       <Main />
     </div>
