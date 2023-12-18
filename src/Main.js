@@ -52,8 +52,8 @@ export default function Meme() {
   }
 
   return (
-    <main className=" grid justify-center items-center">
-      <div className="flex justify-center m-12 ">
+    <main className=" flex flex-col justify-center items-center">
+      <div className="flex justify-center my-4 ">
         <input
           type="text"
           placeholder="1"
@@ -72,17 +72,17 @@ export default function Meme() {
       <div id="div1">
         <button
           onClick={changeMeme}
-          className="bg-gradient-to-r from-custom-main to-custom-secondary px-32 py-4 text-white text-3xl rounded-3xl  w-auto  "
+          className="bg-gradient-to-r from-custom-main to-custom-secondary px-16 py-4 mb-2 text-white text-xl md:text-3xl rounded-3xl "
         >
           Get A New Meme
         </button>
       </div>
-      <div id="image-wrapper" className="  relative m-2 ">
-        <img src={formState.randomImage} className=" mx-auto max-w-2xl " />
-        <h2 className=" absolute top-5 text-center text-white text-5xl font-bold border-x-zinc-800 drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
+      <div id="image-wrapper" className="relative m-2 ">
+        <img src={formState.randomImage} className=" w-screen max-w-2xl " />
+        <h2 className=" break-all text-center whitespace-normal block absolute top-5 text-white text-3xl sm:text-4xl md:text-5xl font-bold border-x-zinc-800 drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
           {formState.topText}
         </h2>
-        <h2 className=" absolute bottom-5 text-center text-white text-5xl font-bold drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
+        <h2 className=" break-all text-center block absolute bottom-5 text-white text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
           {formState.bottomtext}
         </h2>
       </div>
