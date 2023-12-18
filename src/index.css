@@ -4,7 +4,7 @@
 
 @layer base {
   input {
-    @apply w-72 h-14 border-2 border-slate-300 rounded-xl mx-4 px-3 outline-none text-xl;
+    @apply w-40 md:w-72 h-14 border-2 border-slate-300 rounded-xl mx-2 px-3 outline-none text-xl;
   }
 
   #div1,
