@@ -16,16 +16,19 @@ export default function Main() {
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
-      .then((data) => setState(data));
+      .then((data) =>
+        setState(
+          data.data.memes.filter((meme) => {
+            return meme.box_count <= 2;
+          })
+        )
+      );
   }, []);
 
   function changeMeme() {
-    const filteredArray = state.data.memes.filter((meme) => {
-      return meme.box_count <= 2;
-    });
-    const randomNumber = Math.floor(Math.random() * filteredArray.length);
-    const url = filteredArray[randomNumber].url;
-    const name = filteredArray[randomNumber].name;
+    const randomNumber = Math.floor(Math.random() * state.length);
+    const url = state[randomNumber].url;
+    const name = state[randomNumber].name;
     setFormState((prevState) => {
       return {
         ...prevState,
