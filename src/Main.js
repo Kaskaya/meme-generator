@@ -20,9 +20,12 @@ export default function Main() {
   }, []);
 
   function changeMeme() {
-    const randomNumber = Math.floor(Math.random() * state.data.memes.length);
-    const url = state.data.memes[randomNumber].url;
-    const name = state.data.memes[randomNumber].name;
+    const filteredArray = state.data.memes.filter((meme) => {
+      return meme.box_count <= 2;
+    });
+    const randomNumber = Math.floor(Math.random() * filteredArray.length);
+    const url = filteredArray[randomNumber].url;
+    const name = filteredArray[randomNumber].name;
     setFormState((prevState) => {
       return {
         ...prevState,
