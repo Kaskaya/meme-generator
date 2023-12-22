@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { toPng } from "html-to-image";
 import download from "downloadjs";
+import Draggable from "react-draggable";
 
-export default function Meme() {
+export default function Main() {
   const [state, setState] = useState({});
 
   const [formState, setFormState] = useState({
@@ -77,15 +78,21 @@ export default function Meme() {
           Get A New Meme
         </button>
       </div>
+
       <div id="image-wrapper" className="relative m-2 ">
         <img src={formState.randomImage} className=" w-screen max-w-2xl " />
-        <h2 className=" break-all text-center whitespace-normal block absolute top-5 text-white text-3xl sm:text-4xl md:text-5xl font-bold border-x-zinc-800 drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
-          {formState.topText}
-        </h2>
-        <h2 className=" break-all text-center block absolute bottom-5 text-white text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
-          {formState.bottomtext}
-        </h2>
+        <Draggable bounds="parent">
+          <h2 className="cursor-move break-all text-center whitespace-normal block absolute top-5 text-white text-3xl sm:text-4xl md:text-5xl font-bold border-x-zinc-800 drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
+            {formState.topText}
+          </h2>
+        </Draggable>
+        <Draggable bounds="parent">
+          <h2 className="cursor-move break-all text-center block absolute bottom-5 text-white text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow-[0_3.5px_3.2px_rgba(0,0,0,1)] ">
+            {formState.bottomtext}
+          </h2>
+        </Draggable>
       </div>
+
       <div id="div2">
         <button
           onClick={downloadImage}
