@@ -29,9 +29,8 @@ export default function Main() {
     const randomNumber = Math.floor(Math.random() * state.length);
     const url = state[randomNumber].url;
     const name = state[randomNumber].name;
-    setFormState((prevState) => {
+    setFormState(() => {
       return {
-        ...prevState,
         randomImage: url,
         randomName: name,
       };
@@ -59,21 +58,21 @@ export default function Main() {
   }
 
   return (
-    <main className=" flex flex-col justify-center items-center">
+    <main className=" flex flex-col justify-center items-center ">
       <div className="flex justify-center my-4 ">
         <input
           type="text"
           placeholder="1"
           onChange={handleChange}
           name="topText"
-          value={formState.topText}
+          value={formState.topText || ""}
         />
         <input
           type="text"
           placeholder="2"
           onChange={handleChange}
           name="bottomtext"
-          value={formState.bottomtext}
+          value={formState.bottomtext || ""}
         />
       </div>
       <div id="div1">
@@ -103,7 +102,7 @@ export default function Main() {
         <button
           onClick={downloadImage}
           id="download-button"
-          className="bg-slate-300 px-8 py-2 text-black text-3xl rounded-lg  border-2 border-slate-800 "
+          className="bg-white text-custom-main px-8 py-2 mt-2 text-3xl rounded-lg font-bold border-2 border-custom-main "
         >
           Download
         </button>
